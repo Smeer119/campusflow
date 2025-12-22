@@ -5,10 +5,12 @@ import { Calendar, MapPin, Search, X, CheckCircle, Mail, ArrowRight, User as Use
 import { CampusEvent, User } from '../types';
 
 const MOCK_EVENTS: CampusEvent[] = [
+
+  // ===== ON-CAMPUS EVENTS (6) =====
   {
     id: 'e1',
     title: 'Hackathon 2024',
-    description: 'A 24-hour coding challenge for all students. Join teams to build innovative solutions for real-world problems. Prizes include internship opportunities and tech gadgets!',
+    description: 'A 24-hour coding challenge for all students. Build innovative solutions for real-world problems. Exciting prizes and internships.',
     date: 'Oct 15, 2024',
     time: '09:00 AM',
     location: 'Main Hall',
@@ -19,7 +21,7 @@ const MOCK_EVENTS: CampusEvent[] = [
   {
     id: 'e2',
     title: 'TEDx University',
-    description: 'Ideas worth spreading. Featuring top alumni speakers sharing their journeys from college life to successful careers in tech, art, and science.',
+    description: 'Ideas worth spreading. Alumni speakers share journeys from college to successful careers in tech, art, and science.',
     date: 'Nov 02, 2024',
     time: '02:00 PM',
     location: 'Auditorium A',
@@ -29,8 +31,87 @@ const MOCK_EVENTS: CampusEvent[] = [
   },
   {
     id: 'e3',
-    title: 'Local Art Gala',
-    description: 'External exhibition showcasing city artists. A night of culture, live music, and stunning visual arts from the heart of the city.',
+    title: 'AI & Data Science Bootcamp',
+    description: 'Hands-on bootcamp covering AI, ML, and real-world data science projects with industry mentors.',
+    date: 'Oct 28, 2024',
+    time: '10:00 AM',
+    location: 'Computer Lab 1',
+    banner: 'https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&q=80&w=1000',
+    isExternal: false,
+    attendees: [],
+  },
+  {
+    id: 'e4',
+    title: 'Startup & Entrepreneurship Meet',
+    description: 'Learn how to build startups, pitch ideas, and connect with founders and investors.',
+    date: 'Nov 10, 2024',
+    time: '11:00 AM',
+    location: 'Seminar Hall',
+    banner: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&q=80&w=1000',
+    isExternal: false,
+    attendees: [],
+  },
+  {
+    id: 'e5',
+    title: 'UI/UX Design Workshop',
+    description: 'Interactive workshop on modern UI/UX principles, Figma basics, and real project design.',
+    date: 'Oct 22, 2024',
+    time: '01:00 PM',
+    location: 'Design Studio',
+    banner: 'https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&q=80&w=1000',
+    isExternal: false,
+    attendees: [],
+  },
+  {
+    id: 'e6',
+    title: 'Annual Cultural Fest',
+    description: 'Music, dance, drama, fashion show, and fun activities celebrating campus culture.',
+    date: 'Dec 05, 2024',
+    time: '05:00 PM',
+    location: 'Open Ground',
+    banner: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80&w=1000',
+    isExternal: false,
+    attendees: [],
+  },
+
+  // ===== EXTERNAL EVENTS (4) =====
+  {
+    id: 'e7',
+    title: 'National Level Hackathon',
+    description: '48-hour national hackathon hosted by a tech company. Open to students across India.',
+    date: 'Nov 18, 2024',
+    time: '09:00 AM',
+    location: 'Bangalore Tech Park',
+    banner: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=1000',
+    isExternal: true,
+    attendees: [],
+  },
+  {
+    id: 'e8',
+    title: 'Google DevFest',
+    description: 'Developer-focused conference featuring Google technologies, workshops, and networking.',
+    date: 'Dec 01, 2024',
+    time: '10:00 AM',
+    location: 'Hyderabad Convention Center',
+    banner: 'https://images.unsplash.com/photo-1522199710521-72d69614c702?auto=format&fit=crop&q=80&w=1000',
+    isExternal: true,
+    attendees: [],
+  },
+  {
+    id: 'e9',
+    title: 'Tech Career Expo',
+    description: 'Meet recruiters, attend resume workshops, and explore job and internship opportunities.',
+    date: 'Nov 25, 2024',
+    time: '09:30 AM',
+    location: 'Chennai Trade Center',
+    banner: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&q=80&w=1000',
+    isExternal: true,
+    attendees: [],
+  },
+  {
+    id: 'e10',
+    title: 'Local Art & Innovation Gala',
+    description: 'Exhibition blending art, design, and technology. Live demos and creative showcases.',
     date: 'Oct 20, 2024',
     time: '10:00 AM',
     location: 'Downtown Center',
@@ -39,6 +120,7 @@ const MOCK_EVENTS: CampusEvent[] = [
     attendees: [],
   },
 ];
+
 
 interface PulseProps {
   user: User;
@@ -124,7 +206,7 @@ const Pulse: React.FC<PulseProps> = ({ user, setUser }) => {
         ))}
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
         <AnimatePresence mode="popLayout">
           {filteredEvents.map((event) => (
             <motion.div
@@ -236,9 +318,11 @@ const Pulse: React.FC<PulseProps> = ({ user, setUser }) => {
                                 <label className="text-[10px] font-black text-slate-400 tracking-widest uppercase">AREA</label>
                                 <select className="w-full bg-slate-50 border-2 border-slate-100 rounded-[1.2rem] px-5 py-3 md:px-6 md:py-4 font-bold outline-none focus:border-purple-500">
                                   <option>Photography</option>
-                                  <option>Logistics</option>
-                                  <option>PR</option>
+                                  <option>Mentor</option>
+                                  <option>catering</option>
                                   <option>Tech</option>
+                                    <option>Well come</option>
+                                   <option>Other</option>
                                 </select>
                              </div>
                            )}

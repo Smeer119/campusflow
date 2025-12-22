@@ -1,0 +1,57 @@
+/* Ensure the map container has a defined height */
+.leaflet-container {
+  height: 100%;
+  width: 100%;
+  min-height: 60vh;
+  border-radius: 2.5rem;
+  z-index: 0;
+}
+
+/* Fix for map tiles */
+.leaflet-tile {
+  filter: hue-rotate(0deg) !important;
+}
+
+/* Ensure the map container takes full height of parent */
+.map-container {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+/* Fix for marker icons */
+.leaflet-marker-icon,
+.leaflet-marker-shadow {
+  background: none !important;
+  border: none !important;
+}
+
+/* Fix for popup close button */
+.leaflet-popup-close-button {
+  font-size: 24px !important;
+  padding: 8px 12px !important;
+}
+
+/* Custom scrollbar for the search results */
+.search-results {
+  scrollbar-width: thin;
+  scrollbar-color: #c7d2fe #f5f3ff;
+}
+
+.search-results::-webkit-scrollbar {
+  width: 6px;
+}
+
+.search-results::-webkit-scrollbar-track {
+  background: #f5f3ff;
+  border-radius: 3px;
+}
+
+.search-results::-webkit-scrollbar-thumb {
+  background-color: #c7d2fe;
+  border-radius: 3px;
+}

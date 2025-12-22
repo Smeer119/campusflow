@@ -9,6 +9,7 @@ import Connect from './pages/Connect';
 import Profile from './pages/Profile';
 import { User as UserType } from './types';
 import { LayoutGrid, MessageCircle, Map as MapIcon, User as UserIcon } from 'lucide-react';
+import './styles/map.css';
 
 const BackgroundAnimation: React.FC = () => (
   <div className="fixed inset-0 z-[-1] overflow-hidden pointer-events-none bg-white md:bg-[#FAFAFA]">
