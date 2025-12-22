@@ -1,0 +1,8 @@
+{
+  "name": "CampusFlow",
+  "description": "A unified student utility platform for events, AI-driven study planning, and anonymous campus reporting with a soft minimalist aesthetic.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
