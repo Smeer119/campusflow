@@ -1,8 +1,7 @@
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { HashRouter, Routes, Route, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Landing from './pages/Landing';
 import Pulse from './pages/Pulse';
 import Mentor from './pages/Mentor';
 import Connect from './pages/Connect';
@@ -70,10 +69,27 @@ const DesktopSidebar: React.FC = () => {
 };
 
 const App: React.FC = () => {
+  const defaultUser: UserType = {
+    id: 'u123',
+    name: 'Kate Malone',
+    email: 'kate.malone@campus.edu',
+    photoURL: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=200',
+    age: 20,
+    collegeId: 'tech_univ_01',
+    joinedEvents: [],
+    echoCount: 3,
+  };
+
   const [user, setUser] = useState<UserType | null>(() => {
     const saved = localStorage.getItem('cf_user');
-    return saved ? JSON.parse(saved) : null;
+    return saved ? JSON.parse(saved) : defaultUser;
   });
+
+  useEffect(() => {
+    if (!localStorage.getItem('cf_user') && user) {
+      localStorage.setItem('cf_user', JSON.stringify(user));
+    }
+  }, [user]);
 
   const handleLogin = () => {
     const mockUser: UserType = {
@@ -81,6 +97,7 @@ const App: React.FC = () => {
       name: 'Kate Malone',
       email: 'kate.malone@campus.edu',
       photoURL: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=200',
+      age: 20,
       collegeId: 'tech_univ_01',
       joinedEvents: [],
       echoCount: 3,
@@ -107,7 +124,7 @@ const App: React.FC = () => {
           {user && <DesktopSidebar />}
           <main className="flex-1 w-full max-w-7xl mx-auto">
             <Routes>
-              <Route path="/" element={user ? <Navigate to="/pulse" /> : <Landing onLogin={handleLogin} />} />
+              <Route path="/" element={<Navigate to="/pulse" />} />
               <Route path="/pulse" element={user ? <Pulse user={user} setUser={handleUpdateUser} /> : <Navigate to="/" />} />
               <Route path="/mentor" element={user ? <Mentor /> : <Navigate to="/" />} />
               <Route path="/connect" element={user ? <Connect user={user} /> : <Navigate to="/" />} />

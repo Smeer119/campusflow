@@ -96,8 +96,7 @@ const MOCK_PROFILES: (ConnectProfile & { college: string; position: [number, num
     currentRole: 'UX Lead @ Google',
     interests: ['Product Design', 'Basketball', 'Hiking'],
     location: { x: 0, y: 0 }, // Not used in map view
-    position: [COLLEGE_LOCATIONS[0].lat + (Math.random() * 0.01 - 0.005), 
-               COLLEGE_LOCATIONS[0].lng + (Math.random() * 0.01 - 0.005)],
+    position: [COLLEGE_LOCATIONS[0].lat + 0.0031, COLLEGE_LOCATIONS[0].lng - 0.0022],
     college: 'KLE BCA Gokak',
     avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=200',
     bg: 'bg-purple-600'
@@ -110,8 +109,7 @@ const MOCK_PROFILES: (ConnectProfile & { college: string; position: [number, num
     year: 'Sophomore',
     interests: ['Illustration', 'Vegan Cooking', 'Yoga'],
     location: { x: 0, y: 0 }, // Not used in map view
-    position: [COLLEGE_LOCATIONS[1].lat + (Math.random() * 0.01 - 0.005), 
-               COLLEGE_LOCATIONS[1].lng + (Math.random() * 0.01 - 0.005)],
+    position: [COLLEGE_LOCATIONS[1].lat - 0.0026, COLLEGE_LOCATIONS[1].lng + 0.0019],
     college: 'VTU Belagavi',
     avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=200',
     bg: 'bg-blue-400'
@@ -125,8 +123,7 @@ const MOCK_PROFILES: (ConnectProfile & { college: string; position: [number, num
     currentRole: 'Fintech Founder',
     interests: ['Venture Capital', 'Tennis', 'Travel'],
     location: { x: 0, y: 0 }, // Not used in map view
-    position: [COLLEGE_LOCATIONS[2].lat + (Math.random() * 0.01 - 0.005), 
-               COLLEGE_LOCATIONS[2].lng + (Math.random() * 0.01 - 0.005)],
+    position: [COLLEGE_LOCATIONS[2].lat + 0.0014, COLLEGE_LOCATIONS[2].lng + 0.0035],
     college: 'IISc Bangalore',
     avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=200',
     bg: 'bg-rose-500'
@@ -139,8 +136,7 @@ const MOCK_PROFILES: (ConnectProfile & { college: string; position: [number, num
     year: 'Junior',
     interests: ['AI/ML', 'Robotics', 'Coding'],
     location: { x: 0, y: 0 },
-    position: [COLLEGE_LOCATIONS[3].lat + (Math.random() * 0.01 - 0.005), 
-               COLLEGE_LOCATIONS[3].lng + (Math.random() * 0.01 - 0.005)],
+    position: [COLLEGE_LOCATIONS[3].lat - 0.0033, COLLEGE_LOCATIONS[3].lng - 0.0017],
     college: 'NITK Surathkal',
     avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200',
     bg: 'bg-emerald-500'
@@ -153,8 +149,7 @@ const MOCK_PROFILES: (ConnectProfile & { college: string; position: [number, num
     year: 'Senior',
     interests: ['Research', 'Genetics', 'Medicine'],
     location: { x: 0, y: 0 },
-    position: [COLLEGE_LOCATIONS[4].lat + (Math.random() * 0.01 - 0.005), 
-               COLLEGE_LOCATIONS[4].lng + (Math.random() * 0.01 - 0.005)],
+    position: [COLLEGE_LOCATIONS[4].lat + 0.0022, COLLEGE_LOCATIONS[4].lng - 0.0031],
     college: 'Manipal Institute of Technology',
     avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=200',
     bg: 'bg-amber-500'
@@ -168,11 +163,64 @@ const MOCK_PROFILES: (ConnectProfile & { college: string; position: [number, num
     currentRole: 'Automotive Engineer @ Tata Motors',
     interests: ['Cars', 'Robotics', '3D Printing'],
     location: { x: 0, y: 0 },
-    position: [COLLEGE_LOCATIONS[5].lat + (Math.random() * 0.01 - 0.005), 
-               COLLEGE_LOCATIONS[5].lng + (Math.random() * 0.01 - 0.005)],
+    position: [COLLEGE_LOCATIONS[5].lat - 0.0018, COLLEGE_LOCATIONS[5].lng + 0.0028],
     college: 'NIE Mysore',
     avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=200',
     bg: 'bg-indigo-500'
+  },
+  {
+    id: 'p7',
+    name: 'Neha Kulkarni',
+    type: 'Student',
+    stream: 'Information Science',
+    year: '2nd Year',
+    interests: ['DSA', 'Hackathons', 'UI Design'],
+    location: { x: 0, y: 0 },
+    position: [COLLEGE_LOCATIONS[2].lat - 0.0041, COLLEGE_LOCATIONS[2].lng + 0.0012],
+    college: 'IISc Bangalore',
+    avatar: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&q=80&w=200',
+    bg: 'bg-fuchsia-500'
+  },
+  {
+    id: 'p8',
+    name: 'Kiran Shetty',
+    type: 'Alumni',
+    stream: 'Computer Science',
+    year: 'Class of 2018',
+    currentRole: 'SDE @ Microsoft',
+    interests: ['System Design', 'Open Source', 'Mentoring'],
+    location: { x: 0, y: 0 },
+    position: [COLLEGE_LOCATIONS[1].lat + 0.0037, COLLEGE_LOCATIONS[1].lng - 0.0029],
+    college: 'VTU Belagavi',
+    avatar: 'https://images.unsplash.com/photo-1520975958225-52f27337d0c0?auto=format&fit=crop&q=80&w=200',
+    bg: 'bg-slate-900'
+  },
+  {
+    id: 'p9',
+    name: 'Aisha Khan',
+    type: 'Student',
+    stream: 'Electronics',
+    year: 'Final Year',
+    interests: ['IoT', 'Embedded', 'Robotics'],
+    location: { x: 0, y: 0 },
+    position: [COLLEGE_LOCATIONS[3].lat + 0.0029, COLLEGE_LOCATIONS[3].lng + 0.0031],
+    college: 'NITK Surathkal',
+    avatar: 'https://images.unsplash.com/photo-1525134479668-1bee5c7c6845?auto=format&fit=crop&q=80&w=200',
+    bg: 'bg-cyan-500'
+  },
+  {
+    id: 'p10',
+    name: 'Rohit Desai',
+    type: 'Alumni',
+    stream: 'Mechanical Engineering',
+    year: 'Class of 2017',
+    currentRole: 'Product Engineer @ Bosch',
+    interests: ['CAD', 'Automation', 'EV Tech'],
+    location: { x: 0, y: 0 },
+    position: [COLLEGE_LOCATIONS[5].lat + 0.0043, COLLEGE_LOCATIONS[5].lng - 0.0011],
+    college: 'NIE Mysore',
+    avatar: 'https://images.unsplash.com/photo-1508341591423-4347099e1f19?auto=format&fit=crop&q=80&w=200',
+    bg: 'bg-orange-500'
   }
 ];
 

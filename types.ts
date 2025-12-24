@@ -4,6 +4,7 @@ export interface User {
   name: string;
   email: string;
   photoURL: string;
+  age?: number;
   collegeId: string;
   joinedEvents: string[];
   echoCount: number;

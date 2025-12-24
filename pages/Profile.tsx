@@ -1,8 +1,8 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Settings, LogOut, Award, Calendar, Megaphone, ChevronRight, ArrowLeft, Trash2, MapPin, Edit3, Camera, Check, AlertTriangle, Plus, X, ClipboardList } from 'lucide-react';
-import { User, EchoPost } from '../types';
+import { LogOut, Award, Calendar, Megaphone, ChevronRight, ArrowLeft, Edit3, Camera, Check, AlertTriangle, ClipboardList } from 'lucide-react';
+import { User } from '../types';
 
 interface ProfileProps {
   user: User;
@@ -14,10 +14,13 @@ const Profile: React.FC<ProfileProps> = ({ user, setUser, onLogout }) => {
   const [activeView, setActiveView] = useState<'main' | 'events' | 'report'>('main');
   const [showEdit, setShowEdit] = useState(false);
   const [editName, setEditName] = useState(user.name);
+  const [editAge, setEditAge] = useState(user.age?.toString() ?? '');
   const [reportForm, setReportForm] = useState({ title: '', desc: '', img: '' });
 
-  const handleUpdateName = () => {
-    setUser({ ...user, name: editName });
+  const handleUpdateProfile = () => {
+    const trimmedAge = editAge.trim();
+    const nextAge = trimmedAge ? Number(trimmedAge) : undefined;
+    setUser({ ...user, name: editName, age: Number.isFinite(nextAge) ? nextAge : undefined });
     setShowEdit(false);
   };
 
@@ -69,6 +72,24 @@ const Profile: React.FC<ProfileProps> = ({ user, setUser, onLogout }) => {
               <div className="space-y-6">
                 <h3 className="text-[10px] md:text-xs font-black text-slate-300 uppercase tracking-[0.3em] md:tracking-[0.4em] px-2">Manage Activity</h3>
                 <ProfileLinkItem onClick={() => setActiveView('events')} icon={<Calendar className="text-blue-500" />} title="Registered Events" count={user.joinedEvents.length} />
+
+                <div className="bg-white rounded-[2rem] md:rounded-[3rem] p-8 md:p-12 border border-slate-50 shadow-sm">
+                  <h3 className="text-[10px] font-black text-slate-300 uppercase tracking-widest mb-6">Personal Details</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+                    <div className="bg-slate-50 rounded-[1.5rem] md:rounded-[2rem] p-6 border border-slate-100">
+                      <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Email</p>
+                      <p className="mt-2 text-base md:text-lg font-black text-slate-800 break-all">{user.email}</p>
+                    </div>
+                    <div className="bg-slate-50 rounded-[1.5rem] md:rounded-[2rem] p-6 border border-slate-100">
+                      <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Age</p>
+                      <p className="mt-2 text-base md:text-lg font-black text-slate-800">{typeof user.age === 'number' ? user.age : 'Not set'}</p>
+                    </div>
+                    <div className="bg-slate-50 rounded-[1.5rem] md:rounded-[2rem] p-6 border border-slate-100">
+                      <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">College ID</p>
+                      <p className="mt-2 text-base md:text-lg font-black text-slate-800">{user.collegeId}</p>
+                    </div>
+                  </div>
+                </div>
                 
                 {/* Personal Bio */}
                 <div className="bg-white rounded-[2rem] md:rounded-[3rem] p-8 md:p-12 border border-slate-50 shadow-sm">
@@ -155,7 +176,19 @@ const Profile: React.FC<ProfileProps> = ({ user, setUser, onLogout }) => {
                    <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest block px-4">Name</label>
                    <input type="text" value={editName} onChange={(e) => setEditName(e.target.value)} className="w-full bg-slate-50 border-2 border-slate-100 rounded-[1.5rem] md:rounded-[2rem] px-6 md:px-8 py-4 md:py-5 text-lg md:text-xl font-bold outline-none focus:border-purple-500 transition-colors" />
                 </div>
-                <button onClick={handleUpdateName} className="w-full py-5 md:py-7 bg-slate-900 text-white rounded-[2rem] md:rounded-[2.5rem] font-black text-lg md:text-xl shadow-2xl flex items-center justify-center gap-3">
+                <div className="space-y-2 md:space-y-4">
+                  <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest block px-4">Age</label>
+                  <input
+                    type="number"
+                    inputMode="numeric"
+                    min={1}
+                    max={120}
+                    value={editAge}
+                    onChange={(e) => setEditAge(e.target.value)}
+                    className="w-full bg-slate-50 border-2 border-slate-100 rounded-[1.5rem] md:rounded-[2rem] px-6 md:px-8 py-4 md:py-5 text-lg md:text-xl font-bold outline-none focus:border-purple-500 transition-colors"
+                  />
+                </div>
+                <button onClick={handleUpdateProfile} className="w-full py-5 md:py-7 bg-slate-900 text-white rounded-[2rem] md:rounded-[2.5rem] font-black text-lg md:text-xl shadow-2xl flex items-center justify-center gap-3">
                   <Check size={24} /> SAVE
                 </button>
               </div>
